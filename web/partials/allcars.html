@@ -1,0 +1,30 @@
+<div class="col-md-12">
+  <table class="table table-bordered" style="font-size: 12px;">
+    <thead>
+      <th>ID <i class="fa fa-fw fa-sort" ng-click="predicate = 'id'; reverse=!reverse"></th>
+      <th>Year<i class="fa fa-fw fa-sort" ng-click="predicate = 'year'; reverse=!reverse"></i></th>
+      <th>Registered<i class="fa fa-fw fa-sort" ng-click="predicate = 'registered'; reverse=!reverse"></i></th>
+      <th>Make<i class="fa fa-fw fa-sort" ng-click="predicate = 'make'; reverse=!reverse"></i></th>
+      <th>Model<i class="fa fa-fw fa-sort" ng-click="predicate = 'model'; reverse=!reverse"></i></th>
+      <th>Description<i class="fa fa-fw fa-sort" ng-click="predicate = 'description'; reverse=!reverse"></i></th>
+      <th>Price<i class="fa fa-fw fa-sort" ng-click="predicate = 'price'; reverse=!reverse"></i></th>
+      <th>Action</th>
+    </thead>
+    <tbody>
+    <tr ng-repeat="car in cars | filter: carfilter | orderBy:predicate:reverse">
+      <td>{{car.id}}</td>
+      <td>{{car.year }}</td>
+      <td>{{car.registered | date }}</td>
+      <td>{{car.make}}</td>
+      <td>{{car.model}}</td>
+      <td>{{car.description}}</td>
+      <td>{{car.price | currency}}</td>
+      <td class="text-center">
+        <a ng-click="delete(car.id)">Delete</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p class="">Number of cars: {{cars.length}}</p>
+  <input type="search" ng-model="carfilter" placeholder="Filter cars">
+</div>
